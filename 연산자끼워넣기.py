@@ -11,8 +11,8 @@ def calculate(num1, opers, num2):
         return num1*num2
     elif opers =='/':
         if num1<0 and num2>0:
-            return -(-num1)//num2
-        return num1/num2
+            return -((abs(num1))//num2)
+        return num1//num2
 
 
 minimun = 10**9
@@ -43,10 +43,11 @@ for opercombi in permutations(opersChar,N-1):
     # print(tmpExpression)
     #앞에서부터 계산
     resultNumber = calculate(tmpExpression[0],tmpExpression[1],tmpExpression[2])
-
+    # print(tmpExpression[0],tmpExpression[1],tmpExpression[2],resultNumber)
     for i in range(3, len(tmpExpression),2):
+        # print(resultNumber, tmpExpression[i], tmpExpression[i+1], resultNumber)
         resultNumber = calculate(resultNumber,tmpExpression[i],tmpExpression[i+1])
-
+        # print(resultNumber)
     if resultNumber > 10**9 or resultNumber < -10**9:
         continue
 
